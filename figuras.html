@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figuras geométricas | Curso Práctico de JavaScript en Platzi</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        body {
+            margin: 0;
+            width: 100%;
+            /* align-items: center; */
+            /* align-content: center; */
+            background-color: rgb(254, 213, 92);
+        }
+        .header {
+            margin: 0;
+            width: 100%;
+            height: 165px;
+            display: grid;
+            place-content: center;
+            text-align: center;
+            /* background-color: rgb(254, 213, 92); */
+        }
+        form {
+            margin: 0;
+            padding: 0;
+            
+        }
+        .figuras {
+            margin: 0;
+            height: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "cuadra trian circu";
+            grid-gap: 50px;
+            text-align: center;
+            justify-items: center;
+        }
+        .cuadrado {
+            padding: 0px 20px 20px 20px;
+            width: 300px;
+            height: 495px;
+            grid-area: cuadra;
+            background-color: rgba(255, 255, 255, 0.818);
+            border-radius: 20px;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .forma-cuadrada {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            border: black solid 4px;
+        }
+
+        button {
+            margin: 50px;
+            width: 150px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(48, 46, 46);
+            border-radius: 20px;
+            border: none;
+            color: white;
+
+        }
+        /* Triangulo */
+        .triangulo {
+            padding: 0 20px 20px 20px;
+            height: 495px;
+            width: 300px;
+            grid-area: trian;
+            background-color: rgba(255, 255, 255, 0.818);
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(7, fr);
+            /* grid-template-areas: 
+                "ladoAgrid"
+                "ladoBgrid"
+                "ladoBasegrid"
+                "buttonPeriTri"; */
+            /* grid-gap: 20px; */
+            align-items: center;
+            justify-items: center;
+        }
+        .forma-triangular {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            border: none;
+            background-color: black;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        /* Lado A del triángulo*/
+        .ladoAgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "labelA inputA";
+            place-items: center;
+            grid-area: ladoAgrid;
+        }
+        .labelA {
+            grid-area: labelA;
+        }
+        .inputA {
+            grid-area: inputA;
+        }
+        /* Lado B del triángulo*/
+        .ladoBgrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "labelB inputB";
+            place-items: center;
+            grid-area: ladoBgrid;
+        }
+        .labelB {
+            grid-area: labelB;
+        }
+        .inputB {
+            grid-area: inputB;
+        }
+        /* Lado base del triángulo */
+        .ladoBase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "ladoBase inputBase";
+            place-items: center;
+            grid-area: ladoBasegrid;
+        }
+        .labelBase{
+            grid-area: ladoBase;
+        }
+        .inputBase {
+            grid-area: inputBase;
+        }
+        /* Botón del Perímetro del Triángulo */
+        .buttonPeriTri {
+            grid-area: buttonPeriTri;
+        }
+        /* Lado Base del triángulo*/
+        .ladobasegrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "labelA inputA";
+            place-items: center;
+            grid-area: ladoAgrid;
+        }
+        .labebaseA {
+            grid-area: labelA;
+        }
+        .inputbase {
+            grid-area: inputA;
+        }
+        /* Altura del triángulo*/
+        .alturagrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-template-areas: 
+                "labelA inputA";
+            place-items: center;
+            grid-area: ladoAgrid;
+        }
+        .labealtura {
+            grid-area: labelA;
+        }
+        .inputaltura {
+            grid-area: inputA;
+        }
+        /* .buttonAreaTri {
+
+        } */
+        .circulo {
+            margin: 0;
+            padding: 0px 20px 20px 20px;
+            width: 300px;
+            height: 495px;
+            grid-area: circu;
+            background-color: rgba(255, 255, 255, 0.818);
+            border-radius: 20px;        
+        }
+        .forma-circular {
+            display: inline-flex;
+            width: 50px;
+            height: 50px;
+            border: black solid 4px;
+            border-radius: 50%;
+        }
+        h1,
+        h2,
+        h4,
+        p {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <header>
+            <h1>
+                Figuras geométricas
+            </h1>
+            <p>Este es el primer taller del curso práctico de JavaScript</p>
+        </header>
+    </div>
+
+    <div class="figuras">
+
+        <div class="cuadrado">
+            <!-- Cuadrado -->
+            <h2>Cuadrado</h2>
+            <div class="forma-cuadrada"></div>
+            <form>
+                <label for="InputCuadrado">
+                        <h4>Ingresa el lado de tu cuadrado en cm:</h4>
+                </label>
+                <p></p>
+                <input id="InputCuadrado" type="number">
+                
+                <button type="button" onclick="calcularPerimetroCuadrado()">
+                    Calcular el perímetro
+                </button>
+                <button type="button" onclick="calcularAreaCuadrado()">
+                    Calcular el área
+                </button>
+            </form>
+        </div>
+
+        <div class="triangulo">
+            <!-- Triángulo -->
+            <h2>Triángulo</h2>
+            <div class="forma-triangular"></div>
+            <h4>Ingresa las medidas en cm:</h4>
+            <form>
+                <div class="ladoAgrid">
+                    <div class="labelA">
+                        <label for="InputA">
+                            Lado A:
+                        </label>
+                    </div>
+                    <div class="inputA">
+                        <input id="InputA" type="number">
+                    </div>
+                </div>
+                
+                <div class="ladoBgrid">
+                    <div class="labelB">
+                        <label for="InputB">
+                            Lado B:
+                        </label>
+                    </div>
+                    <div class="inputB">
+                        <input id="InputB" type="number">
+                    </div>
+                </div>
+                
+                <div class="ladoBase">
+                    <div class="labelBase">
+                        <label for="InputBase">
+                            Base:
+                        </label>
+                    </div>
+                    <div class="inputBase">
+                        <input id="InputBase" type="number">
+                    </div>
+                </div>
+                
+                <div class="buttonPeriTri">
+                    <button type="button" onclick="calcularPerimetroTriangulo()">
+                        <span>
+                            Calcular el perímetro
+                        </span>
+                    </button>
+                </div>
+                
+                <div class="ladobasegrid">
+                    <label for="InputBase2" class="labelbase">
+                        Base:
+                    </label>
+                    <input id="InputBase2" type="number">
+                </div>
+                
+                <div class="alturagrid">
+                    <label for="InputAltura" class="labelaltura">
+                        Altura:
+                    </label>
+                    <input id="InputAltura" type="number" class="inputaltura">
+                </div>
+
+                <button type="button" onclick="calcularAreaTriangulo()" class="buttonAreaTri">
+                    Calcular el área
+                </button>
+            </form>
+        </div>
+        
+        <div class="circulo">
+            <!-- Círculo -->
+            <h2>Círculo</h2>
+            <div class="forma-circular"></div>
+            <form>
+                    
+                <label for="InputCirculo">
+                    <h4>Ingresa el radio en cm:</h4>
+                </label>
+                <input id="InputCirculo" type="number">
+                <button type="button" onclick="calcularPerimetroCirculo()">
+                    Calcular el perímetro
+                </button>
+                <button type="button" onclick="calcularAreaCirculo()">
+                    Calcular el área
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./figuras.js"></script>
+</body>
+</html>
